@@ -1,0 +1,48 @@
+plugins {
+    id("groovy")
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+    id("io.micronaut.application") version "3.6.0"
+}
+
+version = "0.1"
+group = "com.upwork"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    annotationProcessor("io.micronaut:micronaut-http-validation")
+//    annotationProcessor("io.micronaut.micrometer:micronaut-micrometer-annotation")
+    implementation("io.micronaut:micronaut-http-client")
+//    implementation("io.micronaut:micronaut-jackson-databind")
+//    implementation("io.micronaut:micronaut-management")
+//    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+//    implementation("jakarta.annotation:jakarta.annotation-api")
+//    runtimeOnly("org.slf4j:slf4j-simple")
+//    implementation("io.micronaut:micronaut-validation")
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation("io.micronaut.views:micronaut-views-thymeleaf")
+}
+
+
+application {
+    mainClass.set("com.upwork.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+graalvmNative.toolchainDetection = false
+micronaut {
+    runtime("netty")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("com.upwork.*")
+    }
+}
+
+
+

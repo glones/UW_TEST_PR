@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: petpr
+  metrics:
+    enabled: true
+  router:
+    static-resources:
+      default:
+        enabled: true
+        mapping: "/public/**"
+        paths: "classpath:public"
+netty:
+  default:
+    allocator:
+      max-order: 3
